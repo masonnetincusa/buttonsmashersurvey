@@ -25,9 +25,7 @@
     html,body { height:100%; margin:0; }
     body{
       font-family: var(--font-sans);
-      background: radial-gradient(1200px 600px at 10% 10%, rgba(255,255,255,0.06), transparent 10%),
-                  radial-gradient(1200px 600px at 90% 90%, rgba(0,0,0,0.04), transparent 10%),
-                  linear-gradient(180deg, var(--edge-red), var(--edge-red-dark));
+      background: var(--edge-red);
       color: #0f1724;
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
@@ -159,15 +157,17 @@
       display:inline-flex;
       align-items:center;
       gap:10px;
-      background: linear-gradient(180deg, var(--accent), #9c1515);
+      background: var(--accent);
       color:white;
       padding: var(--button-pad);
       border-radius: 10px;
       font-weight:700;
       font-size:15px;
-      border: none;
+      border: 2px solid #16a34a;
       box-shadow: 0 8px 20px rgba(185,28,28,0.18), inset 0 -1px 0 rgba(255,255,255,0.06);
       cursor:pointer;
+      outline: 3px solid rgba(16,163,74,0.12);
+      outline-offset: 3px;
     }
 
     .btn:focus { outline: 3px solid rgba(185,28,28,0.18); outline-offset: 3px; }
