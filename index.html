@@ -68,14 +68,15 @@
       padding-top: 6px;
     }
 
-    /* Left-aligned links container */
+    /* Left-aligned links container (stacked vertically) */
     .links-left {
       position: absolute;
       left: 16px;
       top: 12px;
       display: flex;
-      gap: 8px; /* closer together */
-      align-items: center;
+      flex-direction: column;
+      gap: 6px; /* closer together and vertical */
+      align-items: flex-start;
       font-size: 13px;
       z-index: 2;
     }
@@ -96,26 +97,26 @@
       text-decoration: underline;
     }
 
-    /* Logo wrap with white outline to prevent visual clipping */
+    /* Logo wrap with black outline/frame */
     .logo-wrap {
       width: 128px;
       height: 128px;
       margin: 0;
       border-radius: 22px;
-      background: white; /* white outline/background */
-      padding: 8px; /* creates visible white frame around image */
+      background: black; /* black outline/frame */
+      padding: 6px; /* frame thickness */
       display: block;
       overflow: hidden;
-      box-shadow: 0 8px 22px rgba(0,0,0,0.14), inset 0 1px 0 rgba(255,255,255,0.6);
+      box-shadow: 0 8px 22px rgba(0,0,0,0.14), inset 0 1px 0 rgba(255,255,255,0.06);
       flex: 0 0 128px;
     }
 
     .logo-inner {
       width: 100%;
       height: 100%;
-      border-radius: 12px;
+      border-radius: 16px;
       overflow: hidden;
-      background: linear-gradient(180deg, rgba(185,28,28,0.04), rgba(15,23,36,0.01));
+      background: white; /* inner white background so logo doesn't appear clipped */
       display:flex;
       align-items:center;
       justify-content:center;
@@ -127,8 +128,7 @@
       height: 100%;
       object-fit: contain;
       object-position: center;
-      /* ensure any image shadow doesn't visually cut into the white frame */
-      filter: drop-shadow(0 4px 10px rgba(0,0,0,0.15));
+      filter: drop-shadow(0 4px 10px rgba(0,0,0,0.12));
     }
 
     h1{
@@ -208,7 +208,7 @@
       body { padding:22px 12px; }
       .logo-wrap { width: 96px; height: 96px; padding:6px; border-radius:18px; }
       .logo-inner { border-radius:10px; }
-      .links-left { position: static; order: -1; margin-bottom: 8px; left:auto; top:auto; }
+      .links-left { position: static; order: -1; margin-bottom: 8px; left:auto; top:auto; align-items:flex-start; }
       header { align-items:center; gap:6px; }
     }
   </style>
