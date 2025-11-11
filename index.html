@@ -1,14 +1,167 @@
-<html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Button Smasher Survey</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
+    :root{
+      --page-bg: #f6f7fb;
+      --card-bg: #ffffff;
+      --accent: #0b6cff;
+      --muted: #6b7280;
+      --radius: 12px;
+      --max-width: 640px; /* keeps layout the same size on larger viewports */
+      --content-pad: 20px;
+      --button-pad: 14px 22px;
+      --shadow: 0 6px 20px rgba(11,108,255,0.08);
+      --font-sans: "Inter", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    /* Reset + base */
+    * { box-sizing: border-box; }
+    html,body { height:100%; margin:0; }
+    body{
+      font-family: var(--font-sans);
+      background: linear-gradient(180deg,#eef2ff 0%, var(--page-bg) 60%);
+      color: #0f1724;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      display:flex;
+      align-items:flex-start;
+      justify-content:center;
+      padding:32px 16px;
+    }
+
+    /* Center column that won't grow beyond --max-width */
+    .wrap{
+      width:100%;
+      max-width: calc(var(--max-width) + 48px); /* allow some breathing room on larger screens */
+      display:flex;
+      justify-content:center;
+    }
+
+    .card{
+      width:100%;
+      max-width: var(--max-width);
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: var(--content-pad);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(15,23,36,0.04);
+    }
+
+    header{
+      text-align:center;
+      margin-bottom: 12px;
+    }
+
+    h1{
+      font-size:20px;
+      line-height:1.15;
+      margin:0 0 6px 0;
+      font-weight:700;
+      letter-spacing: -0.02em;
+    }
+
+    .subtitle{
+      color:var(--muted);
+      font-size:14px;
+      margin:0;
+    }
+
+    hr{
+      border:0;
+      height:1px;
+      background: linear-gradient(90deg, rgba(11,108,255,0.08), rgba(15,23,36,0.02));
+      margin:18px 0;
+      border-radius:1px;
+    }
+
+    /* CTA button */
+    .cta{
+      display:flex;
+      justify-content:center;
+      margin: 8px 0 18px 0;
+    }
+
+    .cta a{
+      text-decoration:none;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      background: linear-gradient(180deg, var(--accent), #0357d8);
+      color:white;
+      padding: var(--button-pad);
+      border-radius: 10px;
+      font-weight:600;
+      font-size:15px;
+      border: none;
+      box-shadow: 0 6px 18px rgba(11,108,255,0.16), inset 0 -1px 0 rgba(255,255,255,0.08);
+      cursor:pointer;
+    }
+
+    .btn:focus { outline: 3px solid rgba(11,108,255,0.18); outline-offset: 3px; }
+    .btn small { font-weight:500; opacity:0.95; }
+
+    /* Responsive iframe container keeps the iframe the same width on larger screens
+       but scales down on smaller viewports. */
+    .iframe-wrap{
+      width:100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #fbfdff;
+      border: 1px solid rgba(15,23,36,0.03);
+    }
+
+    .iframe-wrap iframe{
+      display:block;
+      width:100%;
+      height: 1580px; /* original height preserved */
+      border:0;
+    }
+
+    /* Small tweaks for very narrow screens */
+    @media (max-width:420px){
+      h1 { font-size:18px; }
+      .btn { padding:12px 16px; font-size:14px; }
+      .iframe-wrap iframe { height:1400px; }
     }
   </style>
-  <b><h1><center>Button Smasher Survey</center></h1></b>
-  <center>This website is currently a work in progress.</center>
-  <hr>
-  <center><a href="https://drive.google.com/file/d/1NTri6oSKEPVgiFGtQtAiJHQ02CD-0JVL/view?usp=sharing"><button>Test APK (Button Smasher V1.0 Beta)</button></a></center>
-  <br>
-<center><iframe src="https://docs.google.com/forms/d/e/1FAIpQLSesIZ9EOVewCxAvvqDC7a3xJthHJyyz45y_bp_KK1nm2tEZpA/viewform?embedded=true" width="640" height="1580" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe></center>
+</head>
+<body>
+  <div class="wrap" role="main">
+    <div class="card" aria-labelledby="page-title">
+      <header>
+        <h1 id="page-title">Button Smasher Survey</h1>
+        <p class="subtitle">This website is currently a work in progress.</p>
+      </header>
+
+      <hr />
+
+      <div class="cta" aria-hidden="false">
+        <a href="https://drive.google.com/file/d/1NTri6oSKEPVgiFGtQtAiJHQ02CD-0JVL/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+          <button class="btn" type="button" aria-label="Download Test APK Button Smasher V1.0 Beta">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 3v12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M8 11l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <rect x="3.5" y="17.5" width="17" height="3.5" rx="1" fill="rgba(255,255,255,0.12)"/>
+            </svg>
+            <span>Test APK</span>
+            <small>Button Smasher V1.0 Beta</small>
+          </button>
+        </a>
+      </div>
+
+      <div class="iframe-wrap" aria-label="Embedded survey">
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSesIZ9EOVewCxAvvqDC7a3xJthHJyyz45y_bp_KK1nm2tEZpA/viewform?embedded=true" title="Button Smasher Survey form">Loading…</iframe>
+      </div>
+    </div>
+  </div>
+</body>
 </html>
